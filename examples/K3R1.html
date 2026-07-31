@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spread Transition Graph of K3, R=1</title>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    body { font-family: sans-serif; }
+    h1 { text-align: center; margin: 10px 0; }
+    #container { display: flex; }
+    #base, #trans { width: 50%; height: 600px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Spread Transition Graph of K3, R=1</h1>
+  <div id="container">
+    <div id="base"></div>
+    <div id="trans"></div>
+  </div>
+
+  <script>
+    const baseNodes = new vis.DataSet([{"id": 0, "label": "0", "color": "#ffffff"}, {"id": 1, "label": "1", "color": "#ffffff"}, {"id": 2, "label": "2", "color": "#bd5454"}]);
+    const baseEdges = new vis.DataSet([{"from": 0, "to": 1}, {"from": 0, "to": 2}, {"from": 1, "to": 2}]);
+    const baseNetwork = new vis.Network(
+        document.getElementById("base"),
+        { nodes: baseNodes, edges: baseEdges },
+        { physics: { enabled: true } }
+    );
+
+    const transNodes = new vis.DataSet([{"id": "000", "label": "000", "color": "#FFFFFF"}, {"id": "001", "label": "001", "color": "#9797F1"}, {"id": "112", "label": "112", "color": "#62D484"}, {"id": "221", "label": "221", "color": "#62D484"}, {"id": "002", "label": "002", "color": "#62D484"}, {"id": "010", "label": "010", "color": "#9797F1"}, {"id": "121", "label": "121", "color": "#62D484"}, {"id": "212", "label": "212", "color": "#62D484"}, {"id": "011", "label": "011", "color": "#9797F1"}, {"id": "122", "label": "122", "color": "#62D484"}, {"id": "211", "label": "211", "color": "#62D484"}, {"id": "012", "label": "012", "color": "#62D484"}, {"id": "020", "label": "020", "color": "#62D484"}, {"id": "021", "label": "021", "color": "#62D484"}, {"id": "022", "label": "022", "color": "#62D484"}, {"id": "100", "label": "100", "color": "#9797F1"}, {"id": "101", "label": "101", "color": "#9797F1"}, {"id": "102", "label": "102", "color": "#62D484"}, {"id": "110", "label": "110", "color": "#9797F1"}, {"id": "111", "label": "111", "color": "#9797F1"}, {"id": "222", "label": "222", "color": "#62D484"}, {"id": "120", "label": "120", "color": "#62D484"}, {"id": "200", "label": "200", "color": "#62D484"}, {"id": "201", "label": "201", "color": "#62D484"}, {"id": "202", "label": "202", "color": "#62D484"}, {"id": "210", "label": "210", "color": "#62D484"}, {"id": "220", "label": "220", "color": "#62D484"}]);
+    const transEdges = new vis.DataSet([{"from": "000", "to": "000"}, {"from": "001", "to": "112"}, {"from": "112", "to": "221"}, {"from": "221", "to": "112"}, {"from": "002", "to": "000"}, {"from": "010", "to": "121"}, {"from": "121", "to": "212"}, {"from": "212", "to": "121"}, {"from": "011", "to": "122"}, {"from": "122", "to": "211"}, {"from": "211", "to": "122"}, {"from": "012", "to": "121"}, {"from": "020", "to": "000"}, {"from": "021", "to": "112"}, {"from": "022", "to": "000"}, {"from": "100", "to": "211"}, {"from": "101", "to": "212"}, {"from": "102", "to": "211"}, {"from": "110", "to": "221"}, {"from": "111", "to": "222"}, {"from": "222", "to": "000"}, {"from": "120", "to": "211"}, {"from": "200", "to": "000"}, {"from": "201", "to": "112"}, {"from": "202", "to": "000"}, {"from": "210", "to": "121"}, {"from": "220", "to": "000"}]);
+    const transNetwork = new vis.Network(
+        document.getElementById("trans"),
+        { nodes: transNodes, edges: transEdges },
+        { physics: { enabled: true }, edges: { arrows: "to" } }
+    );
+
+    const stateColors = {"000": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#ffffff"}], "001": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#bd5454"}], "112": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#8cd48c"}], "221": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#bd5454"}], "002": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#8cd48c"}], "010": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#ffffff"}], "121": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#bd5454"}], "212": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#8cd48c"}], "011": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#bd5454"}], "122": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#8cd48c"}], "211": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#bd5454"}], "012": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#8cd48c"}], "020": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#ffffff"}], "021": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#bd5454"}], "022": [{"id": 0, "color": "#ffffff"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#8cd48c"}], "100": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#ffffff"}], "101": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#bd5454"}], "102": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#8cd48c"}], "110": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#ffffff"}], "111": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#bd5454"}], "222": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#8cd48c"}], "120": [{"id": 0, "color": "#bd5454"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#ffffff"}], "200": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#ffffff"}], "201": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#bd5454"}], "202": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#ffffff"}, {"id": 2, "color": "#8cd48c"}], "210": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#bd5454"}, {"id": 2, "color": "#ffffff"}], "220": [{"id": 0, "color": "#8cd48c"}, {"id": 1, "color": "#8cd48c"}, {"id": 2, "color": "#ffffff"}]};
+
+    transNetwork.on("click", function (params) {
+        if (params.nodes.length > 0) {
+            const clickedId = params.nodes[0];
+            const colorUpdate = stateColors[clickedId];
+            if (colorUpdate) {
+                baseNodes.update(colorUpdate);
+            }
+        }
+    });
+  </script>
+</body>
+</html>
